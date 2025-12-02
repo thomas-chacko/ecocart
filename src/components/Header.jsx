@@ -6,12 +6,16 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   const navLinks = ["Home", "About", "Products", "Why EcoCart", "Contact"];
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
 
   return (
     <motion.header
@@ -43,14 +47,14 @@ export default function Header() {
 
         {mounted && (
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? (
+            {resolvedTheme === "dark" ? (
               <Sun size={20} className="text-yellow-500" />
             ) : (
-              <Moon size={20} className="text-gray-700" />
+              <Moon size={20} className="text-gray-700 dark:text-gray-400" />
             )}
           </button>
         )}

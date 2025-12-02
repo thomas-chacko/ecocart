@@ -1,17 +1,6 @@
-@import "tailwindcss";
-
-:root {
-  --eco-green: #2d5016;
-  --eco-light-green: #7cb342;
-  --eco-beige: #f5f1e8;
-  --eco-white: #ffffff;
-  --eco-dark: #1a1a1a;
-}
-
-.dark {
-  --eco-beige: #2a2a2a;
-  --eco-white: #1a1a1a;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   scroll-behavior: smooth;
