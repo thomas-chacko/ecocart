@@ -27,16 +27,16 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Choose Better.
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+            Eco Care for
             <br />
             <span className="text-green-700 dark:text-green-400">
-              Live Greener.
+              Everyday Life
             </span>
           </h1>
 
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Explore eco-friendly alternatives for daily life.
+            Discover eco-friendly products that make a difference. Join the green revolution and shop with purpose for a better tomorrow.
           </p>
 
           <div className="flex gap-4">
