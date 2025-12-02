@@ -1,9 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Check } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { useState } from "react";
 
 export default function ProductCard({ product, index }) {
+  const { addToCart } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -29,12 +40,26 @@ export default function ProductCard({ product, index }) {
             ${product.price}
           </span>
           <motion.button
+            onClick={handleAddToCart}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 bg-green-700 text-white rounded-full font-medium hover:bg-green-800 transition-colors flex items-center gap-2"
+            className={`px-6 py-2 rounded-full font-medium transition-all flex items-center gap-2 ${
+              isAdded
+                ? "bg-green-600 text-white"
+                : "bg-green-700 text-white hover:bg-green-800"
+            }`}
           >
-            <ShoppingCart size={18} />
-            Add to Cart
+            {isAdded ? (
+              <>
+                <Check size={18} />
+                Added!
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={18} />
+                Add to Cart
+              </>
+            )}
           </motion.button>
         </div>
       </div>

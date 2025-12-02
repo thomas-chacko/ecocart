@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Leaf, Menu, X } from "lucide-react";
+import { Moon, Sun, Leaf, Menu, X, ShoppingCart } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 export default function Header() {
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const { getTotalItems, setIsCartOpen } = useCart();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -54,6 +56,26 @@ export default function Header() {
 
           {/* Right side buttons */}
           <div className="flex items-center gap-3">
+            {/* Cart Button */}
+            <motion.button
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 rounded-full bg-green-100 dark:bg-gray-700 hover:bg-green-200 dark:hover:bg-gray-600 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart size={20} className="text-green-700 dark:text-green-400" />
+              {getTotalItems() > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center"
+                >
+                  {getTotalItems()}
+                </motion.span>
+              )}
+            </motion.button>
+
             {/* Desktop Theme Toggle - Modern Toggle Switch */}
             {mounted && (
               <motion.button

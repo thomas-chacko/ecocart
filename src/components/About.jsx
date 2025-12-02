@@ -3,72 +3,118 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Leaf, Recycle, Heart } from "lucide-react";
+import { Users, Package, Leaf } from "lucide-react";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const features = [
+  const stats = [
+    {
+      icon: Users,
+      number: "100+",
+      label: "Happy Customers",
+    },
+    {
+      icon: Package,
+      number: "10+",
+      label: "Eco Products",
+    },
     {
       icon: Leaf,
-      title: "Sustainability",
-      description: "Products made from renewable, biodegradable materials",
-    },
-    {
-      icon: Recycle,
-      title: "Zero-Waste Lifestyle",
-      description: "Reduce plastic waste and embrace circular economy",
-    },
-    {
-      icon: Heart,
-      title: "Eco-Friendly Benefits",
-      description: "Better for you, better for the planet",
+      number: "50T",
+      label: "CO₂ Saved",
     },
   ];
 
   return (
-    <section
-      id="about"
-      ref={ref}
-      className="py-20 bg-white dark:bg-gray-900"
-    >
+    <section id="about" ref={ref} className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Our Mission
+            About EcoCart
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We believe in making sustainable choices accessible and beautiful
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            At Ecocart, we're committed to reducing plastic waste and inspiring
+            eco-friendly choices for a healthier, greener planet.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+        {/* Main Content Grid */}
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+          {/* Making Sustainability Simple */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Making Sustainability Simple
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              We're dedicated to providing high-quality, sustainable products
+              that are safe for you and gentle on the Earth. From everyday
+              essentials to lifestyle accessories, each item in our collection
+              is thoughtfully designed to minimize environmental impact while
+              promoting mindful living.
+            </p>
+          </motion.div>
+
+          {/* Our Mission */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="bg-gradient-to-br from-emerald-50 to-green-100 dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Our Mission
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Our mission is to make eco-friendly living simple, affordable, and
+              accessible to everyone. We aim to encourage small changes that
+              lead to a big difference — because every eco choice matters.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {stats.map((stat, index) => (
             <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="p-8 bg-green-50 dark:bg-gray-800 rounded-2xl text-center hover:shadow-lg transition-shadow"
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+              className="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-2 border-green-100 dark:border-gray-700"
             >
               <div className="inline-flex p-4 bg-green-100 dark:bg-green-900 rounded-full mb-4">
-                <feature.icon className="text-green-700 dark:text-green-400" size={32} />
+                <stat.icon
+                  className="text-green-700 dark:text-green-400"
+                  size={32}
+                />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {feature.description}
-              </p>
+              <div className="text-4xl font-bold text-green-700 dark:text-green-400 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 dark:text-gray-300 font-medium">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
