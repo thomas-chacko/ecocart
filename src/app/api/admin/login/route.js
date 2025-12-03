@@ -9,9 +9,6 @@ export async function POST(request) {
 
     const { email, password } = await request.json();
 
-    console.log('📧 Received email:', email);
-    console.log('🔑 Received password:', password);
-
     if (!email || !password) {
       return NextResponse.json(
         { success: false, message: 'Email and password are required' },
@@ -20,13 +17,6 @@ export async function POST(request) {
     }
 
     const admin = await Admin.findOne({ email });
-    
-    console.log('👤 Admin found:', admin ? 'Yes' : 'No');
-    if (admin) {
-      console.log('📧 DB email:', admin.email);
-      console.log('🔑 DB password:', admin.password);
-      console.log('🔍 Password match:', admin.password === password);
-    }
 
     if (!admin || admin.password !== password) {
       return NextResponse.json(

@@ -2,51 +2,32 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 export default function Products() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const products = [
-    {
-      name: "Bamboo Comb",
-      description: "Handcrafted bamboo comb for smooth, tangle-free hair",
-      price: "12.99",
-      emoji: "🪮",
-    },
-    {
-      name: "Bamboo Toothbrush",
-      description: "Biodegradable bamboo toothbrush with soft bristles",
-      price: "8.99",
-      emoji: "🪥",
-    },
-    {
-      name: "Natural Bath Sponge",
-      description: "100% natural loofah sponge for gentle exfoliation",
-      price: "6.99",
-      emoji: "🧽",
-    },
-    {
-      name: "Reusable Cotton Pads",
-      description: "Soft, washable cotton pads for makeup removal",
-      price: "14.99",
-      emoji: "🧴",
-    },
-    {
-      name: "Bamboo Cutlery Set",
-      description: "Portable eco-friendly utensils for on-the-go",
-      price: "18.99",
-      emoji: "🍴",
-    },
-    {
-      name: "Beeswax Food Wraps",
-      description: "Reusable alternative to plastic wrap",
-      price: "16.99",
-      emoji: "🐝",
-    },
-  ];
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('/api/products');
+      const data = await res.json();
+      if (data.success) {
+        setProducts(data.products);
+      }
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -69,11 +50,22 @@ export default function Products() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <ProductCard key={product.name} product={product} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading products...</p>
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-600 dark:text-gray-400">No products available yet</p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <ProductCard key={product._id} product={product} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

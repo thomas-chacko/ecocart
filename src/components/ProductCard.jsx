@@ -24,8 +24,12 @@ export default function ProductCard({ product, index }) {
       whileHover={{ y: -8 }}
       className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
     >
-      <div className="h-64 bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 flex items-center justify-center">
-        <div className="text-6xl">{product.emoji}</div>
+      <div className="h-64 bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 flex items-center justify-center overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-contain p-8"
+        />
       </div>
 
       <div className="p-6">
