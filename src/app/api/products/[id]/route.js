@@ -23,7 +23,8 @@ function verifyAdmin(request) {
 export async function GET(request, { params }) {
   try {
     await connectDB();
-    const product = await Product.findById(params.id);
+    const { id } = await params;
+    const product = await Product.findById(id);
 
     if (!product) {
       return NextResponse.json(
@@ -57,11 +58,12 @@ export async function PUT(request, { params }) {
 
     await connectDB();
 
+    const { id } = await params;
     const body = await request.json();
     const { name, description, price, image, category } = body;
 
     const product = await Product.findByIdAndUpdate(
-      params.id,
+      id,
       {
         name,
         description,
@@ -104,7 +106,8 @@ export async function DELETE(request, { params }) {
 
     await connectDB();
 
-    const product = await Product.findByIdAndDelete(params.id);
+    const { id } = await params;
+    const product = await Product.findByIdAndDelete(id);
 
     if (!product) {
       return NextResponse.json(
