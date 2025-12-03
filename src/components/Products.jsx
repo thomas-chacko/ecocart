@@ -33,7 +33,7 @@ export default function Products() {
     <section
       id="products"
       ref={ref}
-      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-900"
+      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100"
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -42,10 +42,10 @@ export default function Products() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Our Products
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Discover our curated collection of sustainable essentials
           </p>
         </motion.div>
@@ -53,11 +53,11 @@ export default function Products() {
         {loading ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading products...</p>
+            <p className="mt-4 text-gray-600">Loading products...</p>
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 dark:text-gray-400">No products available yet</p>
+            <p className="text-gray-600">No products available yet</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

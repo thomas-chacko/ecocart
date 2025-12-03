@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800 pt-20"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 pt-20"
     >
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div
@@ -22,20 +22,20 @@ export default function Hero() {
             className="flex items-center gap-2 mb-4"
           >
             <Sparkles className="text-green-600" size={24} />
-            <span className="text-green-700 dark:text-green-400 font-medium">
+            <span className="text-green-700 font-medium">
               Sustainable Living
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
             Eco Care for
             <br />
-            <span className="text-green-700 dark:text-green-400">
+            <span className="text-green-700">
               Everyday Life
             </span>
           </h1>
 
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-xl text-gray-600 mb-8">
             Discover eco-friendly products that make a difference. Join the green revolution and shop with purpose for a better tomorrow.
           </p>
 
@@ -53,7 +53,7 @@ export default function Hero() {
               href="#about"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-green-700 text-green-700 dark:text-green-400 dark:border-green-400 rounded-full font-medium hover:bg-green-50 dark:hover:bg-gray-800 transition-colors"
+              className="px-8 py-3 border-2 border-green-700 text-green-700 rounded-full font-medium hover:bg-green-50 transition-colors"
             >
               Learn More
             </motion.a>
@@ -66,8 +66,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="w-full h-96 bg-gradient-to-br from-green-200 to-emerald-300 dark:from-green-900 dark:to-emerald-800 rounded-3xl flex items-center justify-center">
-            <Sparkles size={120} className="text-green-700 dark:text-green-300 opacity-50" />
+          <div className="w-full h-96 bg-gradient-to-br from-green-200 to-emerald-300 rounded-3xl flex items-center justify-center">
+            <Sparkles size={120} className="text-green-700 opacity-50" />
           </div>
         </motion.div>
       </div>

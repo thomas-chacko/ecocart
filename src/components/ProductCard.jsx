@@ -22,9 +22,9 @@ export default function ProductCard({ product, index }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+      className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
     >
-      <div className="h-64 bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 flex items-center justify-center overflow-hidden">
+      <div className="h-64 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
@@ -33,14 +33,14 @@ export default function ProductCard({ product, index }) {
       </div>
 
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">
           {product.name}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-gray-600 mb-4">
           {product.description}
         </p>
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-green-700 dark:text-green-400">
+          <span className="text-2xl font-bold text-green-700">
             ${product.price}
           </span>
           <motion.button

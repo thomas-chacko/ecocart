@@ -36,7 +36,7 @@ export default function WhyEcoCart() {
     <section
       id="why-ecocart"
       ref={ref}
-      className="py-20 bg-white dark:bg-gray-900"
+      className="py-20 bg-white"
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -45,10 +45,10 @@ export default function WhyEcoCart() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Why Choose EcoCart?
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Making a difference, one product at a time
           </p>
         </motion.div>
@@ -64,14 +64,14 @@ export default function WhyEcoCart() {
             >
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="inline-flex p-6 bg-green-100 dark:bg-green-900 rounded-full mb-4"
+                className="inline-flex p-6 bg-green-100 rounded-full mb-4"
               >
-                <reason.icon className="text-green-700 dark:text-green-400" size={40} />
+                <reason.icon className="text-green-700" size={40} />
               </motion.div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {reason.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600">
                 {reason.description}
               </p>
             </motion.div>

@@ -46,28 +46,28 @@ export default function CartSidebar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed right-0 top-0 h-full w-full sm:w-96 bg-white dark:bg-gray-900 shadow-2xl z-50 flex flex-col"
+            className="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900 rounded-full">
-                  <ShoppingBag className="text-green-700 dark:text-green-400" size={24} />
+                <div className="p-2 bg-green-100 rounded-full">
+                  <ShoppingBag className="text-green-700" size={24} />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-2xl font-bold text-gray-900">
                     Your Cart
                   </h2>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-sm text-gray-500">
                     {cart.length} {cart.length === 1 ? "item" : "items"}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
-                <X size={24} className="text-gray-600 dark:text-gray-400" />
+                <X size={24} className="text-gray-600" />
               </button>
             </div>
 
@@ -75,13 +75,13 @@ export default function CartSidebar() {
             <div className="flex-1 overflow-y-auto p-6">
               {cart.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
-                  <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-full mb-4">
+                  <div className="p-6 bg-gray-100 rounded-full mb-4">
                     <ShoppingBag size={48} className="text-gray-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     Your cart is empty
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 mb-6">
+                  <p className="text-gray-500 mb-6">
                     Add some eco-friendly products to get started!
                   </p>
                   <button
@@ -100,52 +100,52 @@ export default function CartSidebar() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, x: 100 }}
-                      className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-700 p-4 rounded-xl"
+                      className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl"
                     >
                       <div className="flex gap-4">
                         {/* Product Image */}
-                        <div className="w-20 h-20 bg-gradient-to-br from-green-200 to-emerald-300 dark:from-green-900 dark:to-emerald-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div className="w-20 h-20 bg-gradient-to-br from-green-200 to-emerald-300 rounded-lg flex items-center justify-center flex-shrink-0">
                           <span className="text-3xl">{item.emoji}</span>
                         </div>
 
                         {/* Product Details */}
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                          <h3 className="font-semibold text-gray-900 mb-1">
                             {item.name}
                           </h3>
-                          <p className="text-green-700 dark:text-green-400 font-bold mb-3">
+                          <p className="text-green-700 font-bold mb-3">
                             ${item.price}
                           </p>
 
                           {/* Quantity Controls */}
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 bg-white dark:bg-gray-900 rounded-full p-1">
+                            <div className="flex items-center gap-2 bg-white rounded-full p-1">
                               <button
                                 onClick={() =>
                                   updateQuantity(item.name, item.quantity - 1)
                                 }
-                                className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                                className="p-1 hover:bg-gray-100 rounded-full transition-colors"
                               >
-                                <Minus size={16} className="text-gray-600 dark:text-gray-400" />
+                                <Minus size={16} className="text-gray-600" />
                               </button>
-                              <span className="w-8 text-center font-medium text-gray-900 dark:text-white">
+                              <span className="w-8 text-center font-medium text-gray-900">
                                 {item.quantity}
                               </span>
                               <button
                                 onClick={() =>
                                   updateQuantity(item.name, item.quantity + 1)
                                 }
-                                className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+                                className="p-1 hover:bg-gray-100 rounded-full transition-colors"
                               >
-                                <Plus size={16} className="text-gray-600 dark:text-gray-400" />
+                                <Plus size={16} className="text-gray-600" />
                               </button>
                             </div>
 
                             <button
                               onClick={() => removeFromCart(item.name)}
-                              className="p-2 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full transition-colors"
+                              className="p-2 hover:bg-red-100 rounded-full transition-colors"
                             >
-                              <Trash2 size={18} className="text-red-600 dark:text-red-400" />
+                              <Trash2 size={18} className="text-red-600" />
                             </button>
                           </div>
                         </div>
@@ -158,12 +158,12 @@ export default function CartSidebar() {
 
             {/* Footer */}
             {cart.length > 0 && (
-              <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+              <div className="p-6 border-t border-gray-200 bg-gray-50">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <span className="text-lg font-semibold text-gray-900">
                     Total
                   </span>
-                  <span className="text-2xl font-bold text-green-700 dark:text-green-400">
+                  <span className="text-2xl font-bold text-green-700">
                     ${getTotalPrice().toFixed(2)}
                   </span>
                 </div>

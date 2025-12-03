@@ -28,7 +28,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-900"
+      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100"
     >
       <div className="container mx-auto px-6 max-w-2xl">
         <motion.div
@@ -37,10 +37,10 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Get in Touch
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-xl text-gray-600">
             Have questions? We'd love to hear from you
           </p>
         </motion.div>
@@ -50,7 +50,7 @@ export default function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg"
+          className="bg-white rounded-2xl p-8 shadow-lg"
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -58,7 +58,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-6"
           >
-            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            <label className="block text-gray-700 font-medium mb-2">
               Name
             </label>
             <input
@@ -67,7 +67,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </motion.div>
 
@@ -77,7 +77,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="mb-6"
           >
-            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            <label className="block text-gray-700 font-medium mb-2">
               Email
             </label>
             <input
@@ -86,7 +86,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </motion.div>
 
@@ -96,7 +96,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mb-6"
           >
-            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
+            <label className="block text-gray-700 font-medium mb-2">
               Message
             </label>
             <textarea
@@ -105,7 +105,7 @@ export default function Contact() {
               onChange={handleChange}
               required
               rows="5"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
             />
           </motion.div>
 
