@@ -14,15 +14,15 @@ export default function ScrollProgress() {
     <>
       {/* Progress bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary-green/80 origin-left z-[100]"
         style={{ scaleX }}
       />
       
       {/* Glow effect */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 origin-left z-[99] blur-sm"
+      {/* <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-primary-green origin-left z-[99] blur-sm opacity-60"
         style={{ scaleX }}
-      />
+      /> */}
     </>
   );
 }

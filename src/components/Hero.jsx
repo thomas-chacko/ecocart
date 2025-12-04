@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import bannerImage from "../../public/images/bannerImage.jpg"
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 pt-20"
+      className="min-h-screen flex items-center justify-center bg-white pt-20"
     >
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div
@@ -21,30 +22,21 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="flex items-center gap-2 mb-4"
           >
-            <Sparkles className="text-green-600" size={24} />
-            <span className="text-green-700 font-medium">
-              Sustainable Living
-            </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-            Eco Care for
-            <br />
-            <span className="text-green-700">
-              Everyday Life
-            </span>
+          <h1 className="text-5xl md:text-5xl max-w-[560px] font-bold text-gray-900 mb-6">
+            Sustainable Living, Simplified.
           </h1>
 
-          <p className="text-xl text-gray-600 mb-8">
-            Discover eco-friendly products that make a difference. Join the green revolution and shop with purpose for a better tomorrow.
-          </p>
+          <p className="text-lg max-w-[525px] text-gray-600 mb-8">
+            Discover EcoCart's range of eco-friendly products designed for a better planet and a brighter future. Make a positive impact with every choice.</p>
 
           <div className="flex gap-4">
             <motion.a
               href="#products"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-green-700 text-white rounded-full font-medium hover:bg-green-800 transition-colors flex items-center gap-2"
+              className="px-8 py-3 bg-primary-green text-white rounded-full font-medium hover:bg-primary-green/90 transition-colors flex items-center gap-2"
             >
               Shop Now
               <ArrowRight size={20} />
@@ -53,7 +45,7 @@ export default function Hero() {
               href="#about"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-green-700 text-green-700 rounded-full font-medium hover:bg-green-50 transition-colors"
+              className="px-8 py-3 border-2 border-primary-green text-primary-green rounded-full font-medium hover:bg-green-50 transition-colors"
             >
               Learn More
             </motion.a>

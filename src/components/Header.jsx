@@ -1,15 +1,17 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Menu, X, ShoppingCart } from "lucide-react";
+import {  Menu, X, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import Icon from "../../public/images/logo.png"
+import Image from "next/image";
 
 export default function Header() {
   const { getTotalItems, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = ["Home", "About", "Products", "Why EcoCart", "Contact"];
+  const navLinks = ["Home", "About", "Products", "Why EcoCart", "Blog", "Contact"];
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
@@ -21,14 +23,15 @@ export default function Header() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm"
+        className="fixed top-0 w-full bg-white backdrop-blur-md z-50 shadow-sm"
       >
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Leaf className="text-green-700" size={28} />
-            <span className="text-2xl font-bold text-green-800">
-              EcoCart
-            </span>
+            <Image
+              src={Icon}
+              width={100}
+              height={30}
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -50,12 +53,12 @@ export default function Header() {
             {/* Cart Button */}
             <motion.button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 rounded-full bg-green-100 hover:bg-green-200 transition-colors"
+              className="relative p-2 rounded-full bg-primary-green transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Shopping cart"
             >
-              <ShoppingCart size={20} className="text-green-700" />
+              <ShoppingCart size={20} className="text-white" />
               {getTotalItems() > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
