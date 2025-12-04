@@ -14,8 +14,8 @@ export default function Home() {
       <ScrollProgress />
       <Header />
       <Hero />
-      <About />
       <Products />
+      <About />
       <WhyEcoCart />
       <Contact />
       <Footer />

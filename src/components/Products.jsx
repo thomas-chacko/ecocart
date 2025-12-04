@@ -33,7 +33,7 @@ export default function Products() {
     <section
       id="products"
       ref={ref}
-      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100"
+      className="py-20 bg-primary-gray"
     >
       <div className="container mx-auto px-6">
         <motion.div
