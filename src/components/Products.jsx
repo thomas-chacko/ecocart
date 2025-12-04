@@ -43,11 +43,8 @@ export default function Products() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Products
+            Our Sustainable Products
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Discover our curated collection of sustainable essentials
-          </p>
         </motion.div>
 
         {loading ? (
@@ -60,7 +57,7 @@ export default function Products() {
             <p className="text-gray-600">No products available yet</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {products.map((product, index) => (
               <ProductCard key={product._id} product={product} index={index} />
             ))}
