@@ -12,7 +12,7 @@ export default function Hero() {
       className="min-h-screen flex items-center bg-white pt-20"
     >
       <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
