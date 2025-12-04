@@ -8,21 +8,16 @@
 
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-/* Custom scrollbar */
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-green-500 dark:bg-green-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-600 dark:bg-green-500;
+  width: 0;
+  display: none;
 }
