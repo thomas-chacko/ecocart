@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Package, Leaf } from "lucide-react";
 
 export default function About() {
   const ref = useRef(null);
@@ -11,110 +10,97 @@ export default function About() {
 
   const stats = [
     {
-      icon: Users,
-      number: "100+",
-      label: "Happy Customers",
+      number: "12K+",
+      label: "Plastic Saved",
     },
     {
-      icon: Package,
-      number: "10+",
-      label: "Eco Products",
+      number: "95%",
+      label: "Recycled Packaging",
     },
     {
-      icon: Leaf,
-      number: "50T",
-      label: "CO₂ Saved",
+      number: "100%",
+      label: "Cruelty-Free",
+    },
+    {
+      number: "20+",
+      label: "Ethical Partners",
     },
   ];
 
   return (
     <section id="about" ref={ref} className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        {/* Header */}
+      <div className="container px-6 mx-auto lg:px-12">
+        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
             About EcoCart
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            At Ecocart, we're committed to reducing plastic waste and inspiring
-            eco-friendly choices for a healthier, greener planet.
-          </p>
         </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Making Sustainability Simple */}
+        {/* Main Content: Text + Image */}
+        <div className="grid gap-12 items-center lg:grid-cols-2">
+          {/* Left: Mission & Copy */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl"
+            className="space-y-6"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Making Sustainability Simple
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              We're dedicated to providing high-quality, sustainable products
-              that are safe for you and gentle on the Earth. From everyday
-              essentials to lifestyle accessories, each item in our collection
-              is thoughtfully designed to minimize environmental impact while
-              promoting mindful living.
-            </p>
+            <div>
+              <h3 className="mb-4 text-3xl font-semibold leading-snug text-gray-900 md:text-4xl">
+                Our Mission: Nurturing a Greener Tomorrow
+              </h3>
+              <p className="max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">
+                At EcoCart, we believe that small changes can lead to
+                significant impact. Our mission is to provide thoughtfully
+                sourced, high-quality, and genuinely sustainable products that
+                make eco-conscious living accessible and enjoyable for everyone.
+                We're committed to transparency, ethical practices, and
+                fostering a community that values our planet.
+              </p>
+            </div>
+
+            {/* Stats Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="grid grid-cols-2 gap-y-8 gap-x-10 pt-6 max-w-md"
+            >
+              {stats.map((stat, index) => (
+                <div key={stat.label} className="space-y-1">
+                  <div className="text-3xl font-bold text-green-600 md:text-4xl">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-600 md:text-base">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* Our Mission */}
+          {/* Right: Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-gradient-to-br from-emerald-50 to-green-100 p-8 rounded-2xl"
+            className="relative"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Our Mission
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              Our mission is to make eco-friendly living simple, affordable, and
-              accessible to everyone. We aim to encourage small changes that
-              lead to a big difference — because every eco choice matters.
-            </p>
+            <div className="overflow-hidden rounded-3xl shadow-xl">
+              <img
+                src="/images/about.jpg"
+                alt="Hands holding a green earth surrounded by leaves"
+                className="object-cover w-full h-full"
+              />
+            </div>
           </motion.div>
         </div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              className="text-center p-8 bg-white rounded-2xl shadow-lg border-2 border-green-100"
-            >
-              <div className="inline-flex p-4 bg-green-100 rounded-full mb-4">
-                <stat.icon
-                  className="text-green-700"
-                  size={32}
-                />
-              </div>
-              <div className="text-4xl font-bold text-green-700 mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-600 font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
