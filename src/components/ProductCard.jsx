@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 
 export default function ProductCard({ product, index }) {
   const { addToCart } = useCart();
@@ -37,11 +38,12 @@ export default function ProductCard({ product, index }) {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
-          <button
+          <Link
+            href={`/products/${product._id}`}
             className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm sm:text-base font-medium hover:bg-gray-200 transition-colors"
           >
             View Details
-          </button>
+          </Link>
 
           <motion.button
             onClick={handleAddToCart}
