@@ -27,18 +27,18 @@ export default function ProductCard({ product, index }) {
         />
       </div>
 
-      <div className="p-6 text-center">
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">
+      <div className="p-4 sm:p-6 text-center">
+        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">
           {product.name}
         </h3>
 
-        <p className="text-2xl font-bold text-primary-green mb-4">
+        <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary-green mb-3 sm:mb-4">
           ₹{product.price}
         </p>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
           <button
-            className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm sm:text-base font-medium hover:bg-gray-200 transition-colors"
           >
             View Details
           </button>
@@ -47,9 +47,9 @@ export default function ProductCard({ product, index }) {
             onClick={handleAddToCart}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-2.5 bg-primary-green text-white rounded-lg font-medium hover:bg-primary-green/90 transition-colors flex items-center gap-2"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2.5 bg-primary-green text-white rounded-lg text-sm sm:text-base font-medium hover:bg-primary-green/90 transition-colors flex items-center justify-center gap-2"
           >
-            <ShoppingCart size={18} />
+            <ShoppingCart size={16} className="sm:w-[18px] sm:h-[18px]" />
             Add to Cart
           </motion.button>
         </div>
