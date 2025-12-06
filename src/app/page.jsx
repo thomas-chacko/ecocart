@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Products from "@/components/Products";
 import WhyEcoCart from "@/components/WhyEcoCart";
 import Testimonials from "@/components/Testimonials";
+import BlogSection from "@/components/BlogSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
@@ -19,6 +20,7 @@ export default function Home() {
       <About />
       <WhyEcoCart />
       <Testimonials />
+      <BlogSection />
       <Contact />
       <Footer />
       <CartSidebar />
