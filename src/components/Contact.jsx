@@ -146,20 +146,16 @@ export default function Contact() {
             </h3>
 
             <div className="bg-[#F1F8E9] rounded-[24px] overflow-hidden mb-8 h-64 relative border border-green-100">
-              {/* Decorative Map Element */}
-              <div className="absolute inset-0 w-full h-full">
-                <Image
-                  src="https://res.cloudinary.com/dvm1ouojr/image/upload/v1764846220/ecocart/jrgsdnzxftccz58a35an.jpg" // Using an existing image as a placeholder for the map illustration to ensure no broken links. Ideally this would be the specific vector map.
-                  alt="Map Location"
-                  fill
-                  className="object-cover opacity-80"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-red-500 text-white p-2 rounded-full shadow-lg transform -translate-y-4">
-                    <MapPin size={24} fill="currentColor" />
-                  </div>
-                </div>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62959.09392957503!2d76.36321907230699!3d9.513649835369511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0883123eae70ff%3A0xb298e7e964f3afbf!2sKainakary%2C%20Kerala!5e0!3m2!1sen!2sin!4v1765025565584!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
             </div>
 
             <div className="space-y-4">
