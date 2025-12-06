@@ -17,7 +17,7 @@ export default function Footer() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.8 }}
-      className="bg-gray-900 text-white py-12"
+      className="bg-primary-gray py-12"
     >
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-8">

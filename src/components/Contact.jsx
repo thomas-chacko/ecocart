@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send } from "lucide-react";
+import { Send, MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -28,100 +29,130 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-gradient-to-br from-green-50 to-emerald-100"
+      className="py-24 bg-white"
     >
-      <div className="container mx-auto px-6 max-w-2xl">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900">
             Get in Touch
           </h2>
-          <p className="text-xl text-gray-600">
-            Have questions? We'd love to hear from you
-          </p>
         </motion.div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="bg-white rounded-2xl p-8 shadow-lg"
-        >
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-6"
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <label className="block text-gray-700 font-medium mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+            <h3 className="text-2xl font-serif text-gray-900 mb-8">
+              Send Us a Message
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-gray-700 font-medium mb-2 text-sm">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-green-500 transition-colors placeholder:text-gray-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 font-medium mb-2 text-sm">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john.doe@example.com"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-green-500 transition-colors placeholder:text-gray-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 font-medium mb-2 text-sm">
+                  Your Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="How can we help you?"
+                  required
+                  rows="5"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-green-500 transition-colors resize-none placeholder:text-gray-400"
+                />
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                className="px-8 py-3 bg-[#4CAF50] text-white rounded-lg font-bold hover:bg-green-600 transition-colors"
+              >
+                Send Message
+              </motion.button>
+            </form>
           </motion.div>
 
+          {/* Location / Info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-6"
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <label className="block text-gray-700 font-medium mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </motion.div>
+            <h3 className="text-2xl font-serif text-gray-900 mb-8">
+              Our Location
+            </h3>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mb-6"
-          >
-            <label className="block text-gray-700 font-medium mb-2">
-              Message
-            </label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="5"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
-            />
-          </motion.div>
+            <div className="bg-[#F1F8E9] rounded-[24px] overflow-hidden mb-8 h-64 relative border border-green-100">
+              {/* Decorative Map Element */}
+              <div className="absolute inset-0 w-full h-full">
+                <Image
+                  src="https://res.cloudinary.com/dvm1ouojr/image/upload/v1764846220/ecocart/jrgsdnzxftccz58a35an.jpg" // Using an existing image as a placeholder for the map illustration to ensure no broken links. Ideally this would be the specific vector map.
+                  alt="Map Location"
+                  fill
+                  className="object-cover opacity-80"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-red-500 text-white p-2 rounded-full shadow-lg transform -translate-y-4">
+                    <MapPin size={24} fill="currentColor" />
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            className="w-full px-8 py-4 bg-green-700 text-white rounded-full font-medium hover:bg-green-800 transition-colors flex items-center justify-center gap-2"
-          >
-            Send Message
-            <Send size={20} />
-          </motion.button>
-        </motion.form>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-gray-600">
+                <Mail className="text-[#4CAF50]" size={20} />
+                <span>info@ecocart.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-600">
+                <Phone className="text-[#4CAF50]" size={20} />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-600">
+                <MapPin className="text-[#4CAF50]" size={20} />
+                <span>123 Green Earth Ave, EcoCity, EC 98765</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
