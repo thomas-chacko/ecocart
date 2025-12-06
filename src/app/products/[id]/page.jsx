@@ -79,7 +79,7 @@ export default function ProductDetails() {
       <Header />
       <CartSidebar />
       <div className="min-h-screen bg-white pt-24 pb-12">
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="container mx-auto px-6">
           <motion.button
             onClick={() => router.back()}
             initial={{ opacity: 0, x: -20 }}
