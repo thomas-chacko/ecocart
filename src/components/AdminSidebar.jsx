@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutDashboard, ShoppingBag, FileText, MessageSquare, LogOut } from "lucide-react";
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ isOpen, onClose }) {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -22,11 +22,11 @@ export default function AdminSidebar() {
     };
 
     return (
-        <aside className="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform transition-transform duration-300 ease-in-out hidden lg:block">
+        <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="flex flex-col h-full">
                 {/* Logo */}
                 <div className="flex items-center justify-center h-16 border-b border-gray-200 dark:border-gray-700 bg-green-50 dark:bg-gray-900">
-                    <Link href="/admin/dashboard" className="text-2xl font-serif font-bold text-green-600">
+                    <Link href="/admin/dashboard" className="text-2xl font-serif font-bold text-green-600" onClick={onClose}>
                         EcoCart Admin
                     </Link>
                 </div>
@@ -40,6 +40,7 @@ export default function AdminSidebar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
+                                onClick={onClose}
                                 className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${isActive
                                         ? "bg-green-50 text-green-700 dark:bg-gray-700 dark:text-green-400"
                                         : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
