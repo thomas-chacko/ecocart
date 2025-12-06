@@ -15,10 +15,34 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState({ loading: false, success: false, error: null });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus({ loading: true, success: false, error: null });
+
+    try {
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus({ loading: false, success: true, error: null });
+        setFormData({ name: "", email: "", message: "" });
+        alert("Thank you for your message! We'll get back to you soon.");
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      setStatus({ loading: false, success: false, error: error.message });
+      alert("Failed to send message: " + error.message);
+    }
   };
 
   const handleChange = (e) => {
@@ -104,8 +128,9 @@ export default function Contact() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 className="px-8 py-3 bg-[#4CAF50] text-white rounded-lg font-bold hover:bg-green-600 transition-colors"
+                disabled={status.loading}
               >
-                Send Message
+                {status.loading ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>
