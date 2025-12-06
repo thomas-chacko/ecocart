@@ -56,20 +56,20 @@ function MessagesContent() {
                             key={msg._id}
                             className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow p-6 border-l-4 border-green-500"
                         >
-                            <div className="flex justify-between items-start mb-4">
+                            <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-4 sm:gap-0">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-full">
                                         <User className="h-5 w-5 text-green-600 dark:text-green-400" />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 dark:text-white">{msg.name}</h3>
-                                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                            <Mail className="h-3 w-3 mr-1" />
+                                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 break-all">
+                                            <Mail className="h-3 w-3 mr-1 flex-shrink-0" />
                                             {msg.email}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                                <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded w-full sm:w-auto mt-2 sm:mt-0">
                                     <Calendar className="h-3 w-3 mr-1" />
                                     {new Date(msg.createdAt).toLocaleDateString()} at {new Date(msg.createdAt).toLocaleTimeString()}
                                 </div>
