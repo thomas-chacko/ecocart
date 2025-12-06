@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Products from "@/components/Products";
 import WhyEcoCart from "@/components/WhyEcoCart";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
@@ -17,6 +18,7 @@ export default function Home() {
       <Products />
       <About />
       <WhyEcoCart />
+      <Testimonials />
       <Contact />
       <Footer />
       <CartSidebar />

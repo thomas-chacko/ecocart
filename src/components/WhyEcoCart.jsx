@@ -45,7 +45,7 @@ export default function WhyEcoCart() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-serif text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Why Choose EcoCart?
           </h2>
         </motion.div>
