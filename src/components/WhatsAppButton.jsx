@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "918330811956"; // India country code (91) + phone number
+    const phoneNumber = "919495664557"; // India country code (91) + phone number
     const message = "Hi! I'm interested in your eco-friendly products.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
