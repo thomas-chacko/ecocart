@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "cloudinary": "^2.8.0",
     "framer-motion": "^12.23.25",
     "jsonwebtoken": "^9.0.2",
