@@ -161,15 +161,15 @@ export default function Contact() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-600">
                 <Mail className="text-[#4CAF50]" size={20} />
-                <span>info@ecocart.com</span>
+                <span>ecocartinfoindia@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <Phone className="text-[#4CAF50]" size={20} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9495664557</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <MapPin className="text-[#4CAF50]" size={20} />
-                <span>123 Green Earth Ave, EcoCity, EC 98765</span>
+                <span>Kainakary,Alappuzha</span>
               </div>
             </div>
           </motion.div>
