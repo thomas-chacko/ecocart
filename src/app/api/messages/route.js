@@ -18,6 +18,7 @@ export async function POST(request) {
 
     try {
         const body = await request.json();
+        
         const message = await Message.create(body);
         return NextResponse.json({ success: true, data: message }, { status: 201 });
     } catch (error) {

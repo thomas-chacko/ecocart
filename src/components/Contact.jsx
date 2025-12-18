@@ -3,19 +3,20 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, MapPin, Phone, Mail } from "lucide-react";
-import Image from "next/image";
+import { MapPin, Phone, Mail, CheckCircle, X } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({
     name: "",
+    number: "",
     email: "",
     message: "",
   });
 
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,8 +35,10 @@ export default function Contact() {
 
       if (data.success) {
         setStatus({ loading: false, success: true, error: null });
-        setFormData({ name: "", email: "", message: "" });
-        alert("Thank you for your message! We'll get back to you soon.");
+        setFormData({ name: "", number: "", email: "", message: "" });
+        setShowSuccessPopup(true);
+        // Auto hide popup after 3 seconds
+        setTimeout(() => setShowSuccessPopup(false), 3000);
       } else {
         throw new Error(data.error || 'Something went wrong');
       }
@@ -89,6 +92,20 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="John Doe"
                   required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-green-500 transition-colors placeholder:text-gray-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 font-medium mb-2 text-sm">
+                  Your Number
+                </label>
+                <input
+                  type="tel"
+                  name="number"
+                  value={formData.number}
+                  onChange={handleChange}
+                  placeholder="+91 0000000000"
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-green-500 transition-colors placeholder:text-gray-400"
                 />
               </div>
@@ -175,6 +192,34 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        >
+          <div className="bg-white rounded-lg p-8 max-w-md mx-4 relative">
+            <button
+              onClick={() => setShowSuccessPopup(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <X size={20} />
+            </button>
+            <div className="text-center">
+              <CheckCircle className="mx-auto text-green-500 mb-4" size={48} />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Message Sent Successfully!
+              </h3>
+              <p className="text-gray-600">
+                Thank you for your message! We'll get back to you soon.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }
